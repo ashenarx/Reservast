@@ -100,18 +100,26 @@ body {
     flex: 1;
     padding: clamp(1rem, 2vw, 1.5rem);
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-sort-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .filter-container {
     display: flex;
     align-items: center;
-    gap: clamp(0.5rem, 2vw, 1rem);
-    margin-bottom: 1rem;
+    gap: clamp(1rem, 3vw, 1.5rem);
     background-color: #fff;
     border-radius: 12px;
-    padding: 0.5rem;
+    padding: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    width: auto;
+    width: max-content;
     box-sizing: border-box;
 }
 
@@ -121,10 +129,9 @@ body {
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 2rem;
     font-size: clamp(0.75rem, 2vw, 0.875rem);
     font-weight: 500;
-    min-width: min(120px, 12%);
 }
 
 .filter-text {
@@ -149,9 +156,9 @@ body {
 }
 
 .sort-container {
-    margin-left: auto;
     display: flex;
     align-items: center;
+    margin-left: auto;
 }
 
 .filter.sort {
