@@ -7,5 +7,12 @@ function updateButtonState() {
     registerButton.classList.toggle('active', isFilled);
 }
 
+function redirectToHome() {
+    if (emailInput.value.trim() && passwordInput.value.trim()) {
+        window.location.href = '../home/home.html';
+    }
+}
+
 emailInput.addEventListener('input', updateButtonState);
 passwordInput.addEventListener('input', updateButtonState);
+registerButton.addEventListener('click', redirectToHome);
