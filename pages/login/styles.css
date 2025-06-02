@@ -1,0 +1,214 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #F4FBFF;
+    overflow: hidden;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.left-panel {
+    flex: 1;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: clamp(1rem, 5%, 2rem);
+    overflow-y: auto;
+}
+
+.left-panel .logo {
+    font-family: 'Stick No Bills', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-top: 1rem;
+    color: #1B4965;
+}
+
+.left-panel .greeting {
+    font-weight: 700;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+}
+
+.left-panel .subheading {
+    font-weight: 400;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.input-group label {
+    font-weight: 600;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.input-group input {
+    width: 100%;
+    max-width: min(366px, 90%);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:hover,
+.input-group input:focus,
+.input-group input:not(:placeholder-shown) {
+    border-color: #163D54;
+}
+
+.input-group input::placeholder {
+    color: #999;
+}
+
+.input-group button {
+    width: 100%;
+    max-width: min(400px, 90%);
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 100px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    color: #BABEC1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.input-group button.active {
+    background-color: #1B4965;
+    color: #fff;
+}
+
+.checklist-row {
+    max-width: min(400px, 90%);
+    display: flex;
+    justify-content: space-between;
+}
+
+.checklist-row label {
+    display: inline-flex;
+    font-weight: 600;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.checklist-row label input[type="checkbox"] {
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    accent-color: #1B4965;
+}
+
+.checklist-row label:hover {
+    color: #1B4965;
+}
+
+.forgot-password {
+    max-width: min(400px, 90%);
+    font-weight: 500;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    color: #1B4965;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #163D54;
+    text-decoration: underline;
+}
+
+.login-link {
+    margin-bottom: 1rem;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    color: #666;
+}
+
+.login-link a {
+    color: #1B4965;
+    text-decoration: underline;
+}
+
+.right-panel {
+    flex: 1;
+    background: url('../../src/assets/images/login-bg.png') no-repeat center;
+    background-size: cover;
+    margin: clamp(0.5rem, 2vw, 1rem);
+    border-radius: 2rem;
+    position: relative;
+}
+
+.right-panel .text-overlay {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.right-panel .text-overlay h2 {
+    font-weight: 700;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 0.3rem;
+}
+
+.right-panel .text-overlay p {
+    font-weight: 500;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .left-panel {
+        margin-left: 0;
+        padding: 1rem;
+        align-items: center;
+    }
+
+    .right-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .left-panel .logo {
+        font-size: clamp(1.25rem, 5vw, 1.5rem);
+    }
+
+    .left-panel .greeting {
+        font-size: clamp(1.5rem, 6vw, 1.75rem);
+    }
+
+    .input-group input,
+    .input-group button,
+    .checklist-row,
+    .forgot-password {
+        max-width: 100%;
+    }
+}
