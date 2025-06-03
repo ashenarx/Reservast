@@ -1,6 +1,6 @@
 <nav class="nav">
     <div class="nav-content">
-        <div class="logo">RESERVAST</div>
+        <div class="logo" onclick="window.location.href='../../pages/home/home.html'">RESERVAST</div>
         <form class="search-bar" action="/search" method="GET">
             <img src="../../src/assets/icons/search.svg" alt="Search Icon" class="search-icon">
             <input type="text" name="query" class="search-input" placeholder="Cari tempat untuk acaramu di sini">
@@ -21,7 +21,6 @@
         position: relative;
         background-color: #fff;
         margin: 0;
-        margin-bottom: clamp(1rem, 2vw, 2rem);
         padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem);
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         display: flex;

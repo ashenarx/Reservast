@@ -3,10 +3,64 @@ html, body {
     margin: 0;
     height: 100vh;
     background-color: #E6F0FA;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../src/assets/images/bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#navbar .nav {
+    background-color: transparent;
+    color: #fff;
+    box-shadow: none;
+}
+
+#navbar .nav-link {
+    color: #fff;
+}
+
+#navbar .nav-link:hover {
+    color: #f0f0f0;
+}
+
+#navbar .nav-icon {
+    filter: brightness(100%);
+}
+
+#navbar .search-bar {
+    background-color: #fff;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#navbar .search-input {
+    color: #000;
+}
+
+#navbar .search-input::placeholder {
+    color: #999;
+}
+
+#navbar .logo {
+    color: #fff;
+}
+
+.greetings h1 {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: #f5f5f5;
+    margin-bottom: 2rem;
+}
+
+.recommendation-section h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    color: #f5f5f5;
+    margin-bottom: 1rem;
 }
 
 .app-container {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -20,56 +74,95 @@ html, body {
     flex-direction: column;
 }
 
-.filter-sort-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding: 0 1rem;
-}
-
 .filter-container {
     display: flex;
+    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    gap: 1rem;
+    width: 100%;
     background-color: #fff;
     border-radius: 12px;
-    padding: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
 }
 
-.filter.location,
-.filter.room-type,
-.filter.date,
-.filter.time {
-    min-width: 150px;
-    max-height: 20px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+.workspace-toggle {
+    display: flex;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    padding: 0.25rem;
 }
 
-.filter.time img,
-.filter.date img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    margin-right: 0.5rem;
+.toggle-button {
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #219EBC;
+    cursor: pointer;
+    border-radius: 9999px;
+    transition: background-color 0.3s;
+}
+
+.toggle-button.active {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filters-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
 }
 
 .filter {
-    background-color: #EBF0F4;
-    border-radius: 12px;
-    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.filter-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.filter-content {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    background-color: #e5e7eb;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+    font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.date-time-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }
 
 .filter-text {
     flex: 1;
+    color: #6b7280;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
 }
 
 .search-button {
@@ -87,24 +180,6 @@ html, body {
 .search-button .icon {
     width: 20px;
     height: 20px;
-}
-
-.sort-container {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-}
-
-.filter.sort {
-    border: 1px solid #219EBC;
-    background-color: transparent;
-    padding: 0.5rem 1rem;
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-    font-weight: 500;
 }
 
 .card-grid {
@@ -125,7 +200,6 @@ html, body {
     padding: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);

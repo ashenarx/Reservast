@@ -11,34 +11,49 @@
     <div id="navbar"></div>
     <div class="app-container">
         <main class="main-content">
-            <div class="filter-sort-row">
-                <div class="filter-container">
+            <div class="greetings">
+                <h1>Lagi mau reservasi apa hari ini?</h1>
+            </div>
+            <div class="filter-container">
+                <div class="workspace-toggle">
+                    <button class="toggle-button active">Workspace</button>
+                    <button class="toggle-button">Sportcenter</button>
+                </div>
+                <div class="filters-wrapper">
                     <div class="filter location">
-                        <span class="filter-text">Jakarta</span>
-                        <img src="../../src/assets/icons/chevron-bottom.svg" alt="Chevron Down" class="icon">
+                        <span class="filter-label">Lokasi</span>
+                        <div class="filter-content">
+                            <span class="filter-text">Pilih Lokasi Anda</span>
+                            <img src="../../src/assets/icons/chevron-bottom.svg" alt="Chevron Down" class="icon">
+                        </div>
                     </div>
                     <div class="filter room-type">
-                        <span class="filter-text">Meeting Room</span>
-                        <img src="../../src/assets/icons/chevron-bottom.svg" alt="Chevron Down" class="icon">
+                        <span class="filter-label">Jenis Ruangan</span>
+                        <div class="filter-content">
+                            <span class="filter-text">Pilih jenis ruangan</span>
+                            <img src="../../src/assets/icons/chevron-bottom.svg" alt="Chevron Down" class="icon">
+                        </div>
                     </div>
-                    <div class="filter date">
-                        <span class="filter-text">22/09/2025</span>
-                        <img src="../../src/assets/icons/calendar.svg" alt="Calendar Icon" class="icon">
+                    <div class="filter date-time">
+                        <span class="filter-label">Waktu</span>
+                        <div class="date-time-group">
+                            <div class="filter-content">
+                                <span class="filter-text">Pilih tanggal</span>
+                                <img src="../../src/assets/icons/calendar.svg" alt="Calendar Icon" class="icon">
+                            </div>
+                            <div class="filter-content">
+                                <span class="filter-text">Pilih waktu</span>
+                                <img src="../../src/assets/icons/clock.svg" alt="Clock Icon" class="icon">
+                            </div>
+                        </div>
                     </div>
-                    <div class="filter time">
-                        <span class="filter-text">13:00-16:00</span>
-                        <img src="../../src/assets/icons/clock.svg" alt="Clock Icon" class="icon">
-                    </div>
-                    <button class="search-button">
+                    <button class="search-button" onclick="window.location.href='../search/search.html'">
                         <img src="../../src/assets/icons/search-white.svg" alt="Search Icon" class="icon">
                     </button>
                 </div>
-                <div class="sort-container">
-                    <div class="filter sort">
-                        <img src="../../src/assets/icons/sort.svg" alt="Sort Icon" class="icon">
-                        <span class="filter-text">Urutkan</span>
-                    </div>
-                </div>
+            </div>
+            <div class="recommendation-section">
+                <h2>Rekomendasi Workspace</h2>
             </div>
             <div class="card-grid">
                 <div class="card">
