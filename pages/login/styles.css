@@ -161,25 +161,6 @@ body {
     position: relative;
 }
 
-.right-panel .text-overlay {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.right-panel .text-overlay h2 {
-    font-weight: 700;
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    margin-bottom: 0.3rem;
-}
-
-.right-panel .text-overlay p {
-    font-weight: 500;
-    font-size: clamp(0.875rem, 2.5vw, 1rem);
-}
-
 @media (max-width: 768px) {
     .main {
         flex-direction: column;
