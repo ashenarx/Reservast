@@ -33,7 +33,7 @@ body {
     font-weight: 800;
     font-size: clamp(1.5rem, 4vw, 2.25rem);
     margin-top: 1rem;
-    color: #1B4965;
+    color: #219EBC;
 }
 
 .left-panel .greeting {
@@ -71,7 +71,7 @@ body {
 .input-group input:hover,
 .input-group input:focus,
 .input-group input:not(:placeholder-shown) {
-    border-color: #163D54;
+    border-color: #219EBC;
 }
 
 .input-group input::placeholder {
@@ -94,7 +94,7 @@ body {
 }
 
 .input-group button.active {
-    background-color: #1B4965;
+    background-color: #219EBC;
     color: #fff;
 }
 
@@ -105,7 +105,7 @@ body {
 }
 
 .login-link a {
-    color: #1B4965;
+    color: #219EBC;
     text-decoration: underline;
 }
 
