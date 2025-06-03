@@ -109,6 +109,7 @@ html, body {
 }
 
 .toggle-button.active {
+    font-weight: 600;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
