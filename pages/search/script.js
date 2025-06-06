@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "Rp12.000.000/jam",
         },
         {
-            tag: "Co-working space",
+            tag: "Co-working Space",
             image: "../../src/assets/images/orbitroom.png",
             title: "Orbit Room",
             location: "Jakarta Selatan, DKJ",
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "Rp8.500.000/jam",
         },
         {
-            tag: "Co-working space",
+            tag: "Co-working Space",
             image: "../../src/assets/images/pixelpoint.svg",
             title: "PixelPoint",
             location: "Jakarta Barat, DKJ",
