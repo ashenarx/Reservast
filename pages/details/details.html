@@ -36,14 +36,16 @@
                             <ul>
                                 <li>Kapasitas 30 orang</li>
                                 <li>Wi-Fi</li>
-                                <li>10 meja di setiap ruangan</li>
-                                <li>30 kursi di setiap ruangan</li>
-                                <li>30 Stop kontak di setiap ruangan</li>
+                                <li>10 meja</li>
+                                <li>30 kursi</li>
+                                <li>30 stop kontak</li>
                             </ul>
                         </div>
                     </div>
                     <section class="details-rating-section">
-                        <h3>Rating & Ulasan</h3>
+                        <div class="desc-header">
+                            <h2>Rating & Ulasan</h2>
+                        </div>
                         <div class="rating-summary">
                             <span class="rating-score">4.7</span>
                             <div class="rating-bars">
@@ -54,7 +56,18 @@
                                 <div class="rating-bar"><span>1</span><div class="bar"><div class="bar-inner" style="width:1%"></div></div></div>
                             </div>
                         </div>
-                        <div class="review-list">
+                        <div class="review-filter">
+                            <label>Filter bintang:</label>
+                            <select id="star-filter">
+                                <option value="all">Semua</option>
+                                <option value="5">5 Bintang</option>
+                                <option value="4">4 Bintang</option>
+                                <option value="3">3 Bintang</option>
+                                <option value="2">2 Bintang</option>
+                                <option value="1">1 Bintang</option>
+                            </select>
+                        </div>
+                        <div class="review-list" id="review-list">
                             <div class="review-item">
                                 <div class="review-avatar">Q</div>
                                 <div class="review-content">
@@ -72,12 +85,15 @@
                                 </div>
                             </div>
                         </div>
+                        <button id="load-more-review" class="load-more-btn">Lihat Lainnya</button>
                     </section>
                 </div>
                 <aside class="details-right">
                     <div class="details-map-card">
-                        <img src="https://via.placeholder.com/300x120?text=Map" alt="Map">
-                        <div><b>Alamat</b><br>Jakarta Selatan, DKJ</div>
+                        <iframe
+                            src="https://www.google.com/maps?q=hotel+bidakara+meeting+room+jakarta&output=embed"
+                            width="100%" height="180" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div><b>Alamat</b><br>Jl. Gatot Subroto No.Kav. 71-73, RT.8/RW.1, Menteng Dalam, Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12870</div>
                         <div><b>Telepon</b><br>+62 21 8379 3555</div>
                         <div><b>Jam Operasional</b><br>07.00 – 21.00 WIB</div>
                     </div>
@@ -89,6 +105,12 @@
                 </aside>
             </div>
         </main>
+    </div>
+    <div id="image-modal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <button id="prev-img" class="modal-arrow left" aria-label="Sebelumnya">&#8592;</button>
+        <img class="modal-content" id="modal-img">
+        <button id="next-img" class="modal-arrow right" aria-label="Selanjutnya">&#8594;</button>
     </div>
     <script src="script.js"></script>
 </body>
