@@ -5,10 +5,6 @@
             <img src="../../src/assets/icons/search.svg" alt="Search Icon" class="search-icon">
             <input type="text" name="query" class="search-input" placeholder="Cari tempat untuk acaramu di sini">
         </form>
-        <div class="nav-links">
-            <a href="#" class="nav-link">Workspace</a>
-            <a href="#" class="nav-link">Sportcenter</a>
-        </div>
         <div class="nav-icons">
             <img src="../../src/assets/icons/mail.svg" alt="Mail Icon" class="nav-icon">
             <img src="../../src/assets/icons/profile.svg" alt="Profile Icon" class="nav-icon">
@@ -91,35 +87,5 @@
 
     .search-input::placeholder {
         color: #BABEC1;
-    }
-
-    .nav-links {
-        display: flex;
-        gap: clamp(0.75rem, 2vw, 1.5rem);
-    }
-
-    .nav-link {
-        font-size: clamp(0.875rem, 2vw, 1.25rem);
-        font-weight: 500;
-        color: #219EBC;
-        text-decoration: none;
-        transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .nav-link:hover {
-        transform: translateY(-1px);
-        color: #1A6F8C;
-    }
-
-    .nav-icons .nav-icon {
-        width: clamp(1.5rem, 3vw, 2rem);
-        height: clamp(1.5rem, 3vw, 2rem);
-        cursor: pointer;
-        transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .nav-icons .nav-icon:hover {
-        transform: translateY(-1px);
-        filter: brightness(0.8);
     }
 </style>
