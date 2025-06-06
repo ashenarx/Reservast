@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@200..800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
     <div id="navbar"></div>
@@ -26,6 +27,15 @@
                             <span class="filter-text">Pilih Lokasi Anda</span>
                             <img src="../../src/assets/icons/chevron-bottom.svg" alt="Chevron Down" class="icon">
                         </div>
+                        <div class="dropdown">
+                            <ul>
+                                <li>Jakarta Selatan</li>
+                                <li>Jakarta Pusat</li>
+                                <li>Jakarta Barat</li>
+                                <li>Jakarta Timur</li>
+                                <li>Jakarta Utara</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="filter room-type">
                         <span class="filter-label">Jenis Ruangan</span>
@@ -33,21 +43,37 @@
                             <span class="filter-text">Pilih jenis ruangan</span>
                             <img src="../../src/assets/icons/chevron-bottom.svg" alt="Chevron Down" class="icon">
                         </div>
+                        <div class="dropdown">
+                            <ul>
+                                <li>Meeting Room</li>
+                                <li>Private Office</li>
+                                <li>Event Space</li>
+                                <li>Co-working Space</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="filter date-time">
                         <span class="filter-label">Waktu</span>
                         <div class="date-time-group">
                             <div class="filter-content">
-                                <span class="filter-text">Pilih tanggal</span>
+                                <input type="text" id="date-picker" class="filter-text" placeholder="Pilih tanggal" readonly>
                                 <img src="../../src/assets/icons/calendar.svg" alt="Calendar Icon" class="icon">
                             </div>
-                            <div class="filter-content">
+                            <div class="filter-content time-picker">
                                 <span class="filter-text">Pilih waktu</span>
                                 <img src="../../src/assets/icons/clock.svg" alt="Clock Icon" class="icon">
+                                <div class="dropdown time-dropdown">
+                                    <div class="time-grid">
+                                    </div>
+                                    <button class="apply-time-button">Terapkan</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <button class="search-button" onclick="window.location.href='../search/search.html'">
+                    <button
+                        class="search-button"
+                        onclick="redirectToSearch()"
+                    >
                         <img src="../../src/assets/icons/search-white.svg" alt="Search Icon" class="icon">
                     </button>
                 </div>
@@ -124,5 +150,23 @@
         </main>
     </div>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        function redirectToSearch() {
+            const location = document.querySelector(".filter.location .filter-text").textContent.trim();
+            const roomType = document.querySelector(".filter.room-type .filter-text").textContent.trim();
+            const date = document.querySelector("#date-picker").value.trim();
+            const time = document.querySelector(".filter-content.time-picker .filter-text").textContent.trim();
+
+            const queryParams = new URLSearchParams({
+                location,
+                roomType,
+                date,
+                time,
+            });
+
+            window.location.href = `../search/search.html?${queryParams.toString()}`;
+        }
+    </script>
 </body>
 </html>
