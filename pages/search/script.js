@@ -1,12 +1,43 @@
+let locationFilter = "Pilih Lokasi Anda";
+let roomTypeFilter = "Pilih jenis ruangan";
+let dateFilter = "Pilih tanggal";
+let timeFilter = "Pilih waktu";
+
 document.addEventListener('DOMContentLoaded', () => {
     fetch('../../src/components/navbar.html')
         .then(response => response.text())
         .then(html => {
-            document.getElementById('navbar').innerHTML = html;
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                navbar.innerHTML = html;
+            } else {
+                console.error('Navbar element not found');
+            }
         })
         .catch(error => {
             console.error('Error loading navbar:', error);
         });
+
+    const params = new URLSearchParams(window.location.search);
+    locationFilter = params.get('location') || "Pilih Lokasi Anda";
+    roomTypeFilter = params.get('roomType') || "Pilih jenis ruangan";
+    dateFilter = params.get('date') || "Pilih tanggal";
+    timeFilter = params.get('time') || "Pilih waktu";
+
+    const locationFilterText = document.querySelector('.filter.location .filter-text');
+    const roomTypeFilterText = document.querySelector('.filter.room-type .filter-text');
+    const dateFilterText = document.querySelector('.filter.date .filter-text');
+    const timeFilterText = document.querySelector('.filter.time .filter-text');
+
+    if (!locationFilterText || !roomTypeFilterText || !dateFilterText || !timeFilterText) {
+        console.error('One or more filter text elements not found');
+        return;
+    }
+
+    locationFilterText.textContent = locationFilter;
+    roomTypeFilterText.textContent = roomTypeFilter;
+    dateFilterText.textContent = dateFilter;
+    timeFilterText.textContent = timeFilter;
 
     const cards = [
         {
@@ -28,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "Rp12.000.000/jam",
         },
         {
-            tag: "Meeting Room",
+            tag: "Co-working space",
             image: "../../src/assets/images/orbitroom.png",
             title: "Orbit Room",
             location: "Jakarta Selatan, DKJ",
@@ -37,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "Rp8.500.000/jam",
         },
         {
-            tag: "Meeting Room",
+            tag: "Co-working space",
             image: "../../src/assets/images/pixelpoint.svg",
             title: "PixelPoint",
             location: "Jakarta Barat, DKJ",
@@ -46,27 +77,32 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "Rp9.500.000/jam",
         },
         {
-            tag: "Meeting Room",
-            image: "../../src/assets/images/sparkspace.svg",
-            title: "Spark Space",
-            location: "Jakarta Timur, DKJ",
-            rating: 4.3,
-            reviews: 45,
-            price: "Rp7.800.000/jam",
-        },
-        {
-            tag: "Meeting Room",
+            tag: "Event Space",
             image: "../../src/assets/images/quantumhall.svg",
             title: "Quantum Hall",
-            location: "Jakarta Utara, DKJ",
-            rating: 4.5,
-            reviews: 72,
-            price: "Rp11.000.000/jam",
+            location: "Jakarta Timur, DKJ",
+            rating: 4.8,
+            reviews: 150,
+            price: "Rp15.000.000/jam",
         },
+        {
+            tag: "Private Office",
+            image: "../../src/assets/images/sparkspace.svg",
+            title: "Spark Space",
+            location: "Jakarta Utara, DKJ",
+            rating: 4.9,
+            reviews: 200,
+            price: "Rp20.000.000/jam",
+        }
     ];
 
     function renderCards(filteredCards) {
         const cardGrid = document.querySelector(".card-grid");
+        if (!cardGrid) {
+            console.error('Card grid element not found');
+            return;
+        }
+
         cardGrid.innerHTML = "";
 
         if (filteredCards.length === 0) {
@@ -98,24 +134,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function filterCards() {
-        const locationFilter = document.querySelector('.filter.location .filter-text').textContent.trim();
-        const roomTypeFilter = document.querySelector('.filter.room-type .filter-text').textContent.trim();
-
         return cards.filter(card => {
-            const matchesLocation = locationFilter === "Pilih Lokasi Anda" || card.location.includes(locationFilter);
-            const matchesRoomType = roomTypeFilter === "Pilih jenis ruangan" || card.tag === roomTypeFilter;
+            const matchesLocation = locationFilter === "Pilih Lokasi Anda" || (locationFilter && card.location.includes(locationFilter));
+            const matchesRoomType = roomTypeFilter === "Pilih jenis ruangan" || (roomTypeFilter && card.tag === roomTypeFilter);
             return matchesLocation && matchesRoomType;
         });
     }
 
-    document.querySelectorAll('.filter').forEach(filter => {
+    function updateFilters() {
+        const queryParams = new URLSearchParams({
+            location: locationFilter,
+            roomType: roomTypeFilter,
+        });
+
+        window.history.replaceState({}, '', `?${queryParams.toString()}`);
+        renderCards(filterCards());
+    }
+
+    const filters = document.querySelectorAll('.filter');
+    if (filters.length === 0) {
+        console.error('No filter elements found');
+    }
+
+    filters.forEach(filter => {
         const filterContent = filter.querySelector('.filter-text');
         const dropdown = filter.querySelector('.dropdown');
-        const options = dropdown.querySelectorAll('li');
+        const options = dropdown ? dropdown.querySelectorAll('li') : [];
+
+        if (!filterContent || !dropdown || options.length === 0) {
+            console.error('Filter setup incomplete for:', filter);
+            return;
+        }
 
         filter.addEventListener('click', (event) => {
             event.stopPropagation();
-            document.querySelectorAll('.filter').forEach(f => {
+            filters.forEach(f => {
                 if (f !== filter) f.classList.remove('active');
             });
             filter.classList.toggle('active');
@@ -124,16 +177,24 @@ document.addEventListener('DOMContentLoaded', () => {
         options.forEach(option => {
             option.addEventListener('click', (event) => {
                 event.stopPropagation();
-                filterContent.textContent = option.textContent.trim();
+                const selectedText = option.textContent.trim();
+                filterContent.textContent = selectedText;
+
+                if (filter.classList.contains('location')) {
+                    locationFilter = selectedText;
+                } else if (filter.classList.contains('room-type')) {
+                    roomTypeFilter = selectedText;
+                }
+
                 filter.classList.remove('active');
-                renderCards(filterCards());
+                updateFilters();
             });
         });
     });
 
     document.addEventListener('click', () => {
-        document.querySelectorAll('.filter').forEach(f => f.classList.remove('active'));
+        filters.forEach(f => f.classList.remove('active'));
     });
 
-    renderCards(cards);
+    renderCards(filterCards());
 });

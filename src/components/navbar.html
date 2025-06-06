@@ -1,10 +1,6 @@
 <nav class="nav">
     <div class="nav-content">
         <div class="logo" onclick="window.location.href='../../pages/home/home.html'">RESERVAST</div>
-        <form class="search-bar" action="/search" method="GET">
-            <img src="../../src/assets/icons/search.svg" alt="Search Icon" class="search-icon">
-            <input type="text" name="query" class="search-input" placeholder="Cari tempat untuk acaramu di sini">
-        </form>
         <div class="nav-icons">
             <img src="../../src/assets/icons/mail.svg" alt="Mail Icon" class="nav-icon">
             <img src="../../src/assets/icons/profile.svg" alt="Profile Icon" class="nav-icon">
@@ -58,34 +54,5 @@
         font-weight: 800;
         font-size: clamp(1.5rem, 4vw, 2rem);
         color: #219EBC;
-    }
-
-    .search-bar {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        background-color: rgba(33, 158, 188, 0.2);
-        border-radius: 50px;
-        padding: 0.5rem 1rem;
-        width: min(460px, 30%);
-        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .search-icon {
-        width: clamp(1rem, 2vw, 1.5rem);
-        height: auto;
-    }
-
-    .search-input {
-        flex: 1;
-        border: none;
-        outline: none;
-        background: transparent;
-        font-size: clamp(0.875rem, 2vw, 1rem);
-        color: #219EBC;
-    }
-
-    .search-input::placeholder {
-        color: #BABEC1;
     }
 </style>
