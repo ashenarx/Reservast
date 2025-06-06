@@ -13,6 +13,8 @@ html, body {
 }
 
 .main-content {
+    width: 95%;
+    align-self: center;
     flex: 1;
     padding: clamp(1rem, 2vw, 1.5rem);
     overflow-y: auto;
