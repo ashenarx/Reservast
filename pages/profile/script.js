@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             venue: "The Summit Room",
-            date: "25 September 2025",
+            date: "15 September 2025",
             time: "10.00 - 12.00",
             duration: "2 Jam",
             total: "Rp24.000.000",
