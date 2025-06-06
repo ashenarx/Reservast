@@ -44,19 +44,22 @@ body {
     margin-bottom: 1.5rem;
 }
 .main-image {
-    width: 400px;
-    height: 220px;
+    width: 100%;
+    max-width: 1000px;
+    height: 300px;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 12px;
 }
 .gallery-thumbs {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 .gallery-thumb {
-    width: 120px;
-    height: 60px;
+    flex: 1 1 auto;
+    max-width: 100%;
+    aspect-ratio: 16/9;
     object-fit: cover;
     border-radius: 8px;
 }
