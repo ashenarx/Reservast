@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Reservast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@200..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <div class="app-container">
+        <main class="main-content">
+            <h1 class="page-title">Profile</h1>
+            <div class="profile-container">
+                <div class="left-panel">
+                    <h2>Data Diri</h2>
+                    <div class="data diri">
+                        <div class="input-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" value="user@example.com" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Kata Sandi:</label>
+                            <input type="password" id="password" value="********" readonly>
+                        </div>
+                        <a href="#" class="change-password">Ubah Kata Sandi</a>
+                    </div>
+                </div>
+
+                <div class="right-panel">
+                    <h2>Riwayat Reservasi</h2>
+                    <div class="reservation-list">
+                        <div class="reservation-card">
+                            <img src="../../src/assets/images/hotelbidakara.svg" alt="Venue Image" class="reservation-image">
+                            <div class="reservation-details">
+                                <p><b>Venue:</b> Hotel Bidakara Meeting Room</p>
+                                <p><b>Tanggal:</b> 22 September 2025</p>
+                                <p><b>Waktu:</b> 13.00 - 16.00</p>
+                                <p><b>Durasi:</b> 3 Jam</p>
+                                <p><b>Total Biaya:</b> Rp30.000.000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="toggle-reservations" class="toggle-button">Lihat Lebih Banyak</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
