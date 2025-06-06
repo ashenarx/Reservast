@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "Rp12.000.000/jam",
         },
         {
-            tag: "Meeting Room",
+            tag: "Co-working Space",
             image: "../../src/assets/images/orbitroom.png",
             title: "Orbit Room",
             location: "Jakarta Selatan, DKJ",
@@ -107,13 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
             price: "Rp8.500.000/jam",
         },
         {
-            tag: "Meeting Room",
-            image: "../../src/assets/images/pixelpoint.svg",
-            title: "PixelPoint",
-            location: "Jakarta Barat, DKJ",
-            rating: 4.6,
-            reviews: 89,
-            price: "Rp9.500.000/jam",
+            tag: "Event Space",
+            image: "../../src/assets/images/quantumhall.svg",
+            title: "Quantum Hall",
+            location: "Jakarta Timur, DKJ",
+            rating: 4.8,
+            reviews: 150,
+            price: "Rp15.000.000/jam",
         },
     ];
 
