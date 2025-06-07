@@ -170,4 +170,58 @@ document.addEventListener('DOMContentLoaded', function() {
 
     renderReviews();
 });
-//
+const pricePerHour = 10000000;
+const reservationDate = document.getElementById('reservation-date');
+const slotsContainer = document.getElementById('reservation-slots');
+const durationSpan = document.getElementById('reservation-duration');
+const subtotalSpan = document.getElementById('reservation-subtotal');
+
+const openHour = 7;
+const closeHour = 21;
+
+const bookedSlots = {
+    '2025-06-08': [8, 16],
+    '2025-06-09': [10, 12, 14],
+};
+
+let selectedSlots = [];
+
+function renderSlots() {
+    const date = reservationDate.value;
+    slotsContainer.innerHTML = '';
+    selectedSlots = [];
+    let booked = bookedSlots[date] || [];
+    for (let h = openHour; h <= closeHour; h += 1) {
+        const label = h.toString().padStart(2, '0') + ':00';
+        const isBooked = booked.includes(h);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot-btn' + (isBooked ? ' booked' : '');
+        btn.textContent = label;
+        btn.disabled = isBooked;
+        btn.dataset.hour = h;
+        btn.onclick = function() {
+            if (btn.classList.contains('selected')) {
+                btn.classList.remove('selected');
+                selectedSlots = selectedSlots.filter(s => s !== h);
+            } else {
+                btn.classList.add('selected');
+                selectedSlots.push(h);
+            }
+            updateReservationSummary();
+        };
+        slotsContainer.appendChild(btn);
+    }
+    updateReservationSummary();
+}
+
+function updateReservationSummary() {
+    selectedSlots.sort((a, b) => a - b);
+    const duration = selectedSlots.length;
+    durationSpan.textContent = `Durasi: ${duration} jam`;
+    subtotalSpan.textContent = `Subtotal: Rp ${(duration * pricePerHour).toLocaleString('id-ID')}`;
+}
+
+reservationDate.addEventListener('change', renderSlots);
+
+if (reservationDate.value) renderSlots();

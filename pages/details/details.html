@@ -100,6 +100,19 @@
                     <div class="details-price-card">
                         <div class="price-label">Biaya Reservasi :</div>
                         <div class="price">Rp 10.000.000/jam</div>
+
+                        <div class="reservation-card">
+                            <div class="reservation-card-title">Pilih Jam Reservasi</div>
+                            <label for="reservation-date">Tanggal:</label>
+                            <input type="date" id="reservation-date" required>
+                            <div class="reservation-slots-label">Jam Reservasi:</div>
+                            <div id="reservation-slots" class="reservation-slots"></div>
+                            <div class="reservation-summary">
+                                <span id="reservation-duration">Durasi: 0 jam</span>
+                                <span id="reservation-subtotal">Subtotal: Rp 0</span>
+                            </div>
+                        </div>
+
                         <button class="reserve-btn">Reservasi</button>
                     </div>
                 </aside>
@@ -115,4 +128,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-//
