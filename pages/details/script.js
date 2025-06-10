@@ -8,12 +8,6 @@ fetch('../../src/components/navbar.html')
     });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.querySelector('.reserve-btn');
-    if (btn) {
-        btn.addEventListener('click', () => {
-            alert('Reservasi berhasil! Silakan cek email Anda untuk konfirmasi.');
-        });
-    }
 
     const images = [
         "../../src/assets/images/hotelbidakara.svg",
@@ -168,60 +162,79 @@ document.addEventListener('DOMContentLoaded', function() {
         renderReviews();
     });
 
-    renderReviews();
-});
-const pricePerHour = 10000000;
-const reservationDate = document.getElementById('reservation-date');
-const slotsContainer = document.getElementById('reservation-slots');
-const durationSpan = document.getElementById('reservation-duration');
-const subtotalSpan = document.getElementById('reservation-subtotal');
+    const reserveBtn = document.getElementById('reserve-btn');
+    const reservationDate = document.getElementById('reservation-date');
+    const slotsContainer = document.getElementById('reservation-slots');
+    let selectedSlots = [];
 
-const openHour = 7;
-const closeHour = 21;
-
-const bookedSlots = {
-    '2025-06-08': [8, 16],
-    '2025-06-09': [10, 12, 14],
-};
-
-let selectedSlots = [];
-
-function renderSlots() {
-    const date = reservationDate.value;
-    slotsContainer.innerHTML = '';
-    selectedSlots = [];
-    let booked = bookedSlots[date] || [];
-    for (let h = openHour; h <= closeHour; h += 1) {
-        const label = h.toString().padStart(2, '0') + ':00';
-        const isBooked = booked.includes(h);
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'slot-btn' + (isBooked ? ' booked' : '');
-        btn.textContent = label;
-        btn.disabled = isBooked;
-        btn.dataset.hour = h;
-        btn.onclick = function() {
-            if (btn.classList.contains('selected')) {
-                btn.classList.remove('selected');
-                selectedSlots = selectedSlots.filter(s => s !== h);
-            } else {
-                btn.classList.add('selected');
-                selectedSlots.push(h);
-            }
+    function renderSlots() {
+        slotsContainer.innerHTML = '';
+        selectedSlots = [];
+        const date = reservationDate.value;
+        if (!date) {
+            updateReserveBtnState();
             updateReservationSummary();
-        };
-        slotsContainer.appendChild(btn);
+            return;
+        }
+        for (let h = 7; h <= 21; h++) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'slot-btn';
+            btn.dataset.hour = h;
+            btn.textContent = `${h.toString().padStart(2, '0')}:00`;
+            btn.onclick = function() {
+                if (btn.classList.contains('selected')) {
+                    btn.classList.remove('selected');
+                    selectedSlots = selectedSlots.filter(val => val !== h);
+                } else {
+                    btn.classList.add('selected');
+                    selectedSlots.push(h);
+                }
+                updateReserveBtnState();
+                updateReservationSummary();
+            };
+            slotsContainer.appendChild(btn);
+        }
+        updateReserveBtnState();
+        updateReservationSummary();
     }
-    updateReservationSummary();
-}
 
-function updateReservationSummary() {
-    selectedSlots.sort((a, b) => a - b);
-    const duration = selectedSlots.length;
-    durationSpan.textContent = `Durasi: ${duration} jam`;
-    subtotalSpan.textContent = `Subtotal: Rp ${(duration * pricePerHour).toLocaleString('id-ID')}`;
-}
+    function updateReserveBtnState() {
+        if (!reservationDate.value || selectedSlots.length === 0) {
+            reserveBtn.classList.add('disabled');
+        } else {
+            reserveBtn.classList.remove('disabled');
+        }
+    }
 
-reservationDate.addEventListener('change', renderSlots);
+    function updateReservationSummary() {
+        const pricePerHour = 10000000;
+        const duration = selectedSlots.length;
+        const durationSpan = document.getElementById('reservation-duration');
+        const subtotalSpan = document.getElementById('reservation-subtotal');
+        const summaryDiv = document.querySelector('.reservation-summary');
+        if (reservationDate.value && duration > 0) {
+            summaryDiv.style.display = "flex";
+            durationSpan.textContent = `Durasi: ${duration} jam`;
+            subtotalSpan.textContent = `Subtotal: Rp ${(duration * pricePerHour).toLocaleString('id-ID')}`;
+        } else {
+            summaryDiv.style.display = "none";
+        }
+    }
 
-if (reservationDate.value) renderSlots();
+    reservationDate.addEventListener('change', renderSlots);
+
+    renderSlots();
+
+    reserveBtn.addEventListener('click', function(e) {
+        if (reserveBtn.classList.contains('disabled')) {
+            alert('Silakan pilih tanggal dan jam reservasi terlebih dahulu.');
+            reservationDate.focus();
+            document.querySelector('.reservation-card').scrollIntoView({behavior: 'smooth', block: 'center'});
+            e.preventDefault();
+            return;
+        }
+        window.location.href = '../checkout/checkout.html';
+    });
+
+});

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Reservasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div id="navbar"></div>
+        <main class="details-main">
+            <div class="checkout-title">Konfirmasi Reservasi</div>
+            <div class="checkout-main">
+                <div class="checkout-left">
+                    <div class="checkout-card">
+                        <div class="checkout-room">
+                            <img src="../../src/assets/images/hotelbidakara.svg" class="checkout-room-img" alt="Hotel Bidakara">
+                            <div class="checkout-room-info">
+                                <h3>Hotel Bidakara Meeting Room</h3>
+                                <p>Jl. Gatot Subroto RT.8/RW.1, Menteng Dalam, Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12870</p>
+                                <div class="rating"><img src="../details/../../src/assets/icons/star.svg" alt="Star" style="width:18px;"> 4.67 (9 Ulasan)</div>
+                                <div class="price">Rp10.000.000/jam</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-card">
+                        <div class="checkout-detail-title" style="font-weight:600;font-size:1.1rem;margin-bottom:1rem;">Detail reservasi</div>
+                        <ul class="checkout-detail-list">
+                            <li><b>Tanggal</b><br>22 September 2025</li>
+                            <li><b>Waktu</b><br>13.00 - 16.00</li>
+                            <li><b>Durasi</b><br>3 Jam</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="checkout-right">
+                    <div class="payment-methods">
+                        <div style="font-weight:600;margin-bottom:1rem;">Metode pembayaran</div>
+                        <label><img src="../../src/assets/icons/bankmandiri.png" alt="Mandiri" style="width:28px;"> Mandiri Virtual Account
+                            <input type="radio" name="payment" value="mandiri" checked>
+                        </label>
+                        <label><img src="../../src/assets/icons/gopay.png" alt="Gopay" style="width:28px;"> Gopay
+                            <input type="radio" name="payment" value="gopay">
+                        </label>
+                    </div>
+                    <div class="checkout-total-card" id="checkout-total-card">
+                        <div class="checkout-total-label">Total tagihan</div>
+                        <div class="checkout-total" id="total-bill">Rp30.000.000</div>
+                        <div class="split-bill-row">
+                            <span>Split bill</span>
+                            <div class="split-switch" id="split-switch">
+                                <div class="split-switch-circle"></div>
+                            </div>
+                        </div>
+                        <div id="split-bill-section" style="display:none;">
+                            <input type="number" min="2" max="20" id="split-bill-count" class="split-bill-input" placeholder="Masukkan jumlah peserta split bill">
+                            <div id="split-bill-perperson" class="split-bill-perperson"></div>
+                            <div class="split-bill-links" id="split-bill-links"></div>
+                            <div class="split-bill-timer" id="split-bill-timer"></div>
+                        </div>
+                        <div class="dp-row" style="margin: 1rem 0;">
+                            <label>
+                                <input type="checkbox" id="use-dp">
+                                Bayar DP 50% (Sisa dibayar saat check-in)
+                            </label>
+                        </div>
+                        <button class="checkout-btn" id="pay-btn">Konfirmasi</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="payment-modal" class="payment-modal">
+        <div class="payment-modal-content" style="max-width:350px;">
+            <span class="close-modal" id="close-payment-modal">&times;</span>
+            <h3>Pembayaran</h3>
+            <div id="payment-modal-desc"></div>
+            <div style="margin:1rem 0;">
+                <button id="prev-participant" style="margin-right:10px;">&#8592; Sebelumnya</button>
+                <button id="next-participant">&#8594; Berikutnya</button>
+            </div>
+            <button id="pay-simulate-btn" class="checkout-btn" style="margin-top:1rem;">Simulasi Bayar</button>
+        </div>
+    </div>
+    <div id="success-modal" class="payment-modal">
+        <div class="payment-modal-content" style="max-width:350px;">
+            <h2 style="margin-bottom:0.5rem;">Reservasi Berhasil!</h2>
+            <div style="margin-bottom:0.5rem;">Reservasi Anda telah berhasil dikonfirmasi</div>
+            <div style="margin-bottom:1rem;">Anda dapat melihat riwayat transaksi di halaman Profil</div>
+            <div id="success-modal-detail" style="text-align:left; margin-bottom:1.5rem;"></div>
+            <button id="close-success-modal" class="checkout-btn" style="background:#18a7c9;">Tutup</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

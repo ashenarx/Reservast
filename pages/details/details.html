@@ -14,7 +14,7 @@
         <main class="details-main">
             <div class="details-content">
                 <div class="details-left">
-                    <a href="#" class="back-btn">&#8592; Kembali</a>
+                    <a href="../search/search.html" class="back-btn">&#8592; Kembali</a>
                     <h1 class="details-title">Hotel Bidakara Meeting Room</h1>
                     <div class="details-gallery">
                         <img src="../../src/assets/images/hotelbidakara.svg" class="main-image" alt="Main">
@@ -107,13 +107,13 @@
                             <input type="date" id="reservation-date" required>
                             <div class="reservation-slots-label">Jam Reservasi:</div>
                             <div id="reservation-slots" class="reservation-slots"></div>
-                            <div class="reservation-summary">
-                                <span id="reservation-duration">Durasi: 0 jam</span>
-                                <span id="reservation-subtotal">Subtotal: Rp 0</span>
+                            <div class="reservation-summary" style="display:none;">
+                                <span id="reservation-duration"></span>
+                                <span id="reservation-subtotal"></span>
                             </div>
                         </div>
 
-                        <button class="reserve-btn">Reservasi</button>
+                        <button class="reserve-btn" id="reserve-btn">Reservasi</button>
                     </div>
                 </aside>
             </div>

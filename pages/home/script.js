@@ -122,25 +122,37 @@ document.addEventListener('DOMContentLoaded', () => {
         cardGrid.innerHTML = "";
 
         cards.forEach((card) => {
-            const cardElement = `
-                <div class="card">
-                    <span class="card-tag">${card.tag}</span>
-                    <img src="${card.image}" alt="${card.title}" class="card-image">
-                    <div class="card-content">
-                        <h2>${card.title}</h2>
-                        <div class="card-location">
-                            <img src="../../src/assets/icons/location.svg" alt="Location Icon" class="icon">
-                            <span>${card.location}</span>
-                        </div>
-                        <div class="card-rating">
-                            <img src="../../src/assets/icons/star.svg" alt="Star Icon" class="icon">
-                            <span>${card.rating} (${card.reviews} Ulasan)</span>
-                        </div>
-                        <div class="card-price">${card.price}</div>
+
+            const cardElement = document.createElement('div');
+            cardElement.className = 'card';
+            cardElement.setAttribute('data-title', card.title);
+
+            cardElement.innerHTML = `
+                <span class="card-tag">${card.tag}</span>
+                <img src="${card.image}" alt="${card.title}" class="card-image">
+                <div class="card-content">
+                    <h2>${card.title}</h2>
+                    <div class="card-location">
+                        <img src="../../src/assets/icons/location.svg" alt="Location Icon" class="icon">
+                        <span>${card.location}</span>
                     </div>
+                    <div class="card-rating">
+                        <img src="../../src/assets/icons/star.svg" alt="Star Icon" class="icon">
+                        <span>${card.rating} (${card.reviews} Ulasan)</span>
+                    </div>
+                    <div class="card-price">${card.price}</div>
                 </div>
             `;
-            cardGrid.innerHTML += cardElement;
+            cardGrid.appendChild(cardElement);
+        });
+        
+        document.querySelectorAll('.card').forEach(card => {
+            if (card.getAttribute('data-title') === 'Hotel Bidakara Meeting Room') {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    window.location.href = '../details/details.html';
+                });
+            }
         });
     }
 
